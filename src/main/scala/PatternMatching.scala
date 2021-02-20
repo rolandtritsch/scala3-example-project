@@ -57,13 +57,17 @@ object PatternMatching {
 
   }
 
-  def test: Unit = {
-    import booleanPattern._
+  def evenString(s: String): Boolean = s match {
+    case s @ booleanPattern.Even() => true
+    case s                         => false
+  }
 
-    "even" match {
-      case s @ Even() => println(s"$s has an even number of characters")
-      case s          => println(s"$s has an odd number of characters")
-    }
+  def test: Unit = {
+    val s = "even"
+    if evenString(s) then
+      println(s"$s has an even number of characters")
+    else
+      println(s"$s has an odd number of characters")
 
     // https://dotty.epfl.ch/docs/reference/changed-features/vararg-splices.html
     def containsConsecutive(list: List[Int]): Boolean = list match {
