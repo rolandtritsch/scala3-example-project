@@ -3,6 +3,8 @@
   */
 object ParameterUntupling {
 
+  def zipIt[T](l: List[T]): List[(T, Int)] = l.zipWithIndex 
+
   def test: Unit = {
     /**
       * In order to get thread safety, you need to put @volatile before lazy vals.
@@ -16,7 +18,7 @@ object ParameterUntupling {
       * Note: The expected type requires a one-argument function accepting a 2-Tuple.
       * Consider a pattern matching anonymous function, `{ case (s, i) =>  ... }`
       */
-    xs.zipWithIndex.map((s, i) => println(s"$i: $s"))
+    zipIt(xs).foreach((s, i) => println(s"$i: $s"))
   }
 
 }
