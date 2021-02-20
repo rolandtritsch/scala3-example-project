@@ -6,6 +6,6 @@ lazy val root = project
     version := "0.1.0",
     scalaVersion := "3.0.0-M3",
     useScala3doc := true,
-    libraryDependencies += "io.monix" %% "minitest" % "2.9.2" % "test",
+    libraryDependencies += "io.monix" %% "minitest-laws" % "2.9.2" % "test",
     testFrameworks += new TestFramework("minitest.runner.Framework")
   )

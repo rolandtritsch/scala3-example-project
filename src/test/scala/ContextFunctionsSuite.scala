@@ -1,4 +1,5 @@
 import minitest._
+import minitest.laws.Checkers
 import ContextFunctions._
 
 import scala.concurrent.Await
@@ -6,26 +7,30 @@ import scala.concurrent.ExecutionContext
 import scala.concurrent.duration._
 import scala.language.postfixOps
 
-object ContextFunctionsSuite extends SimpleTestSuite {
+object ContextFunctionsSuite extends SimpleTestSuite with Checkers {
   import ExecutionContext.Implicits.global
 
   test("context - asyncSum") {
-    val result = Await.result(context.asyncSum(3, 4), 10 seconds)
-    assertEquals(result, 7)
+    check2((x: Int, y: Int) => {
+      Await.result(context.asyncSum(x, y), 10 seconds) == x + y
+    })
   }
  
-  test("context - asyncMul") {
-    val result = Await.result(context.asyncMult(3, 4), 10 seconds)
-    assertEquals(result, 12)
+  test("context - asyncMult") {
+    check2((x: Int, y: Int) => {
+      Await.result(context.asyncMult(x, y), 10 seconds) == x * y
+    })
   }
 
   test("parse - sumStrings") {
-    val result = parse.sumStrings("3", "4").get
-    assertEquals(result, 7)
+    check2((x: Int, y: Int) => {
+      parse.sumStrings(x.toString, y.toString).get == x + y
+    })
   }
-
+ 
   test("parse - sumStrings (bad)") {
-    val result = parse.sumStrings("3", "a")
-    assert(result.isFailure)
+    check2((i: Int, s: String) => {
+      parse.sumStrings(i.toString, s).isFailure
+    })
   }
 }

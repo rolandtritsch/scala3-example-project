@@ -1,9 +1,12 @@
 import minitest._
+import minitest.laws.Checkers
 import Conversion._
 
-object ConverstionSuite extends SimpleTestSuite {
+object ConverstionSuite extends SimpleTestSuite with Checkers {
   test("convert") {
-    assertEquals(convert(new IntWrapper(42)), new DoubleWrapper(42.0))
+    check1((i: Int) => {
+      convert(new IntWrapper(i)) == new DoubleWrapper(i.toDouble)
+    })
   }
 
   test("useConversion") {
