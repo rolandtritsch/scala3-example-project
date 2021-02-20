@@ -14,18 +14,11 @@ object Conversion {
     override def apply(i: IntWrapper): DoubleWrapper = new DoubleWrapper(i.a.toDouble)
   }
 
-  def useConversion(using f: Conversion[IntWrapper, DoubleWrapper]) = {
+  def useConversion(using f: Conversion[IntWrapper, DoubleWrapper]): DoubleWrapper = {
     val y: IntWrapper = new IntWrapper(4)
     val x: DoubleWrapper = y
     x
   }
-
-  /* Not working anymore.
-    def useConversion(implicit f: A => B) = {
-      val y: A = ...
-      val x: B = a    // error under Dotty
-    }
-   */
 
   def test: Unit = {
     println(useConversion)
