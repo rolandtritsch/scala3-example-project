@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/scala/scala3-example-project.svg?branch=master)](https://travis-ci.org/scala/scala3-example-project)
 
+Note: This fork was modified to add tests (using minitest).
+
 ## Usage
 
 This is a normal sbt project, you can compile code with `sbt compile` and run it
