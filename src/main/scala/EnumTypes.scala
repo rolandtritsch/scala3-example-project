@@ -1,6 +1,6 @@
 /**
-  * Enum Types: https://dotty.epfl.ch/docs/reference/enums/adts.html
-  */
+ * Enum Types: https://dotty.epfl.ch/docs/reference/enums/adts.html
+*/
 object EnumTypes {
 
   enum ListEnum[+A] {
@@ -23,19 +23,18 @@ object EnumTypes {
     case Neptune extends Planet(1.024e+26, 2.4746e7)
   }
 
+  def calculateEarthWeightOnPlanets(earthWeight: Double) = {
+    val mass = earthWeight/Planet.Earth.surfaceGravity
+    Planet.values.map(p => p.surfaceWeight(mass)).toList
+  }
+
   def test: Unit = {
     val emptyList = ListEnum.Empty
     val list = ListEnum.Cons(1, ListEnum.Cons(2, ListEnum.Cons(3, ListEnum.Empty)))
     println(emptyList)
     println(s"${list}\n")
 
-    def calculateEarthWeightOnPlanets(earthWeight: Double) = {
-      val mass = earthWeight/Planet.Earth.surfaceGravity
-      for (p <- Planet.values)
-        println(s"Your weight on $p is ${p.surfaceWeight(mass)}")
-    }
-
-    calculateEarthWeightOnPlanets(80)
+    println(s"Weights: ${calculateEarthWeightOnPlanets(100)}")
   }
 
 }
