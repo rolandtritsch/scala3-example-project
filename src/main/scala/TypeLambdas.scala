@@ -8,11 +8,11 @@ object TypeLambdas {
   type Tuple = [X] =>> (X, X)
 
   def test: Unit = {
-    val m: T[String, Int] = Map(1 -> "1")
-    println(m)
+    val `map`: T[String, Int] = Map(1 -> "1")
+    println(`map`)
 
-    val tuple: Tuple[String] = ("a", "b")
-    println(tuple)
+    val `tuple`: Tuple[String] = ("a", "b")
+    println(`tuple`)
   }
 
 }
