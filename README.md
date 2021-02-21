@@ -1,8 +1,8 @@
 # Example sbt project that compiles using Dotty
 
-[![Build Status](https://travis-ci.org/scala/scala3-example-project.svg?branch=master)](https://travis-ci.org/scala/scala3-example-project)
+[![CircleCI](https://circleci.com/gh/rolandtritsch/scala3-example-project.svg?style=svg)](https://circleci.com/gh/rolandtritsch/scala3-example-project)
 
-Note: This fork was modified to add tests (using minitest).
+Note: This fork was [modified](https://tedn.life/2021/02/21/scala-3-is-...-gluten-free/) to add tests (using [minitest](https://github.com/monix/minitest)).
 
 ## Usage
 
